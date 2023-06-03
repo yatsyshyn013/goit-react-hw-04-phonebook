@@ -6,6 +6,7 @@ import { PhoneBookContainer } from './App.styled';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
+import { click } from '@testing-library/user-event/dist/click';
 
 
 
@@ -14,9 +15,11 @@ export default function App() {
 
   const [contacts, setContacts] = useState([])
   const [filter, setFilter] = useState("")
+  const [click, setClick] = useState(0)
 
   useEffect(() => {
-   
+
+        // fbq('track', 'ViewContent');
        const contactList = localStorage.getItem('contact');
        const parsedContacts = JSON.parse(contactList);
 
@@ -30,6 +33,8 @@ export default function App() {
     if (contacts.length > 0) {
       localStorage.setItem('contact', JSON.stringify(contacts))
     }
+
+    
     
   }, [contacts])
 
@@ -56,6 +61,12 @@ export default function App() {
       )
   }
 
+  const handleClickPurchase = () => {
+        fbq('track', 'click');
+        setClick(click + 1)
+        console.log(1);
+  }
+
   return (
       <PhoneBookContainer>
         <h1>PhoneBook</h1>
@@ -72,7 +83,11 @@ export default function App() {
         <ContactList
           contacts={getFilteredContacts()}
           deleteButton={deleteButton}
-        />
+      />
+      
+        <button onClick={handleClickPurchase}>{click}</button>
+    
+
         <ToastContainer
           autoClose={3000}
           position="top-center"
