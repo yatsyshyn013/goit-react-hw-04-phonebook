@@ -61,11 +61,11 @@ export default function App() {
       )
   }
 
-  const handleClickPurchase = () => {
-        fbq('track', 'click');
-        setClick(click + 1)
-        console.log(1);
-  }
+  // const handleClickPurchase = () => {
+  //       fbq('track', 'click');
+  //       setClick(click + 1)
+  //       console.log(1);
+  // }
 
   return (
       <PhoneBookContainer>
@@ -85,7 +85,7 @@ export default function App() {
           deleteButton={deleteButton}
       />
       
-        <button onClick={handleClickPurchase}>{click}</button>
+        {/* <button onClick={handleClickPurchase}>{click}</button> */}
     
 
         <ToastContainer
