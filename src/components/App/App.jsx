@@ -15,11 +15,11 @@ export default function App() {
 
   const [contacts, setContacts] = useState([])
   const [filter, setFilter] = useState("")
-  const [click, setClick] = useState(0)
+  // const [click, setClick] = useState(0)
 
   useEffect(() => {
 
-        // fbq('track', 'ViewContent');
+        // fbq('track', 'PageView');
        const contactList = localStorage.getItem('contact');
        const parsedContacts = JSON.parse(contactList);
 
